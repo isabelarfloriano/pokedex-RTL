@@ -43,7 +43,7 @@ it('Teste se é mostrado apenas um pokémon por vez', () => {
   expect(allDataTestid.length).toBe(1);
 });
 
-it('Teste se a Pokédex tem os botões de filtro', () => {
+it('Teste se a Pokédex tem os botões de filtro e seu funcionamento', () => {
   renderWithRouter(<App />);
   const buttonAll = screen.getByRole('button', { name: /all/i });
   expect(buttonAll).toBeInTheDocument();
@@ -78,6 +78,10 @@ it('Teste se a Pokédex tem os botões de filtro', () => {
     name: /dragon/i,
   });
   expect(dragon).toBeInTheDocument();
+  const screenPokemon = screen.getByTestId('pokemon-type');
+  expect(screenPokemon).toHaveTextContent('Electric');
+  userEvent.click(dragon);
+  expect(screenPokemon).toHaveTextContent('Dragon');
 });
 
 it('Teste se a Pokédex contém um botão para resetar o filtro', () => {

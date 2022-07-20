@@ -35,6 +35,8 @@ it('Teste se existe na página uma seção com os mapas contendo as localizaçõ
     name: /pikachu location/i,
   });
   expect(getMaps).toHaveLength(pokemons[0].foundAt.length);
+  expect(getMaps[0].src).toContain(pokemons[0].foundAt[0].map);
+  expect(getMaps[1].src).toContain(pokemons[0].foundAt[1].map);
 });
 it('Teste se o usuário pode favoritar um pokémon através da página de detalhes', () => {
   renderWithRouter(<App />);
